@@ -1,4 +1,4 @@
-# Webpack4.x基础脚手架 （[文档](http://doc.cpt.com)）
+# Webpack4.x基础脚手架
 
 ## npm 命令
 * `npm start`或则`npm run dev` 进入热开发模式
