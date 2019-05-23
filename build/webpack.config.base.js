@@ -44,7 +44,7 @@ module.exports = env => ({
         ]
       },
       {
-        test: /\.(gif|jpg|jpeg|png|woff|svg|eot|ttf)\??.*$/,
+        test: /\.(woff|svg|eot|ttf)\??.*$/,
         use: [
           {
             loader: 'url-loader',
@@ -52,6 +52,18 @@ module.exports = env => ({
               limit: 50000,
               name: 'assets/[name].[ext]',
               publicPath: production ? '../' : './'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(gif|jpg|jpeg|png)\??.*$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 50000,
+              name: 'assets/[name].[ext]'
             }
           }
         ]
@@ -75,7 +87,9 @@ module.exports = env => ({
     alias: {
       vue: 'vue/dist/vue.js',
       store: resolve('src/store/modules'),
-      '@': resolve('src')
+      '@': resolve('src'),
+      storejs: resolve('node_modules/store'),
+      'cpt-toolkit': resolve('cpt-toolkit')
     },
     modules: ['node_modules', 'styles']
   },
@@ -97,6 +111,7 @@ module.exports = env => ({
     new MiniCssExtractPlugin({
       filename: production ? 'css/[name].[hash].css' : '[name].css',
       chunkFilename: production ? 'css/[id].[hash].css' : '[id].css'
-    })
+    }),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ]
 });
