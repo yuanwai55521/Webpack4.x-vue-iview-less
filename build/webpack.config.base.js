@@ -87,9 +87,7 @@ module.exports = env => ({
     alias: {
       vue: 'vue/dist/vue.js',
       store: resolve('src/store/modules'),
-      '@': resolve('src'),
-      storejs: resolve('node_modules/store'),
-      'cpt-toolkit': resolve('cpt-toolkit')
+      '@': resolve('src')
     },
     modules: ['node_modules', 'styles']
   },
